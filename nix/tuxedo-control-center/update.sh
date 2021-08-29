@@ -2,10 +2,8 @@
 
 set -eu -o pipefail
 
-SCRIPTDIR="$( dirname "${BASH_SOURCE[0]}" )"
-NIXPKGS="$SCRIPTDIR"/../../../..
-node2nix="$(nix-build "$NIXPKGS" -A nodePackages.node2nix)/bin/node2nix"
-curl="$(nix-build "$NIXPKGS" -A curl)/bin/curl"
+node2nix="$(nix-build "<nixpkgs>" -A nodePackages.node2nix)/bin/node2nix"
+curl="$(nix-build "<nixpkgs>" -A curl)/bin/curl"
 
 if [ "$#" -ne 1 ]; then
     >&2 echo "Error: Missing version parameter"
