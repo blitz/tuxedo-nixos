@@ -16,4 +16,7 @@ jobs:
     - uses: cachix/cachix-action@v10
       with:
         name: blitz
-    - run: nix-shell --run "echo OK"
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - run: |
+        nix-shell --run "echo OK"
+        nix-build --arg nixpkgs "<nixpkgs>" ./nix/ci.nix -A tuxedo-control-center
