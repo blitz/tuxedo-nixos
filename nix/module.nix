@@ -18,7 +18,18 @@ in
   };
 
   config = mkIf cfg.enable {
-    hardware.tuxedo-keyboard.enable = true;
+    assertions = [
+      {
+        assertion = !config.hardware.tuxedo-keyboard.enable;
+        message = "hardware.tuxedo-control-center is not compatible with tuxedo-keyboard as long as we use our own version of the tuxedo-keyboard module.";
+      }
+    ];
+
+    boot.extraModulePackages = [
+      (pkgs.tuxedo-keyboard.override {
+        kernel = config.boot.kernelPackages.kernel;
+      })
+    ];
     boot.kernelModules = [ "tuxedo_io" ];
 
     environment.systemPackages = [

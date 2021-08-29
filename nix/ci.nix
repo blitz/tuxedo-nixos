@@ -1,20 +1,19 @@
 { nixpkgs ? (import ./sources.nix).nixpkgs }:
 let
-  pkgs = import nixpkgs {};
+  pkgs = import nixpkgs {
+    overlays = [
+      (import ./overlay.nix)
+    ];
+  };
 
-  tuxedo-control-center = pkgs.callPackage ./tuxedo-control-center {};
 in {
-  inherit tuxedo-control-center;
+  inherit (pkgs) tuxedo-control-center tuxedo-keyboard;
 
   test = pkgs.nixosTest ({ lib, pkgs, ... }: {
     name = "tuxedo-control-center-test";
     machine = { pkgs, ... }: {
       imports = [
         ./module.nix
-      ];
-
-      nixpkgs.overlays = [
-        (final: prev: { inherit tuxedo-control-center; })
       ];
 
       hardware.tuxedo-control-center.enable = true;
