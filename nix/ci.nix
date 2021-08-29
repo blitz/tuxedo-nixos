@@ -1,8 +1,10 @@
 { nixpkgs ? (import ./sources.nix).nixpkgs }:
 let
+  this = import ../.;
+  
   pkgs = import nixpkgs {
     overlays = [
-      (import ./overlay.nix)
+      this.overlay
     ];
   };
 
@@ -13,7 +15,7 @@ in {
     name = "tuxedo-control-center-test";
     machine = { pkgs, ... }: {
       imports = [
-        ./module.nix
+        this.module
       ];
 
       hardware.tuxedo-control-center.enable = true;

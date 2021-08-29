@@ -7,7 +7,7 @@
 This repository provides a Nix derivation for the Tuxedo Control
 Center until it is packaged in
 [Nixpkgs](https://github.com/NixOS/nixpkgs) (see
-NixOS/nixpkgs#132206).
+[NixOS/nixpkgs#132206](https://github.com/NixOS/nixpkgs/issues/132206)).
 
 [Tuxedo](https://www.tuxedocomputers.com/) is a German laptop
 manufacturer that provides Linux-friendly laptops. Their system
@@ -19,4 +19,25 @@ control settings. It lives on
 
 ## Usage
 
-TODO
+To enable Tuxedo Control Center, add the module and overlay from this
+repository to your `/etc/nixos/configuration.nix`.
+
+```nix
+{ config, pkgs, ... }:
+let
+  tuxedo = import (builtins.fetchTarball "https://github.com/blitz/tuxedo-nixos/archive/master.tar.gz");
+in {
+
+ # ...
+
+ imports = [
+   tuxedo.module
+ ];
+
+ nixpkgs.overlays = [
+   tuxedo.overlay
+ ];
+
+ hardware.tuxedo.enable = true;
+}
+```
