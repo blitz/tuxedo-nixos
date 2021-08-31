@@ -4,6 +4,8 @@ with lib;
 
 let
   cfg = config.hardware.tuxedo-control-center;
+
+  tuxedo-control-center = pkgs.callPackage ./tuxedo-control-center {};
 in
 {
   options.hardware.tuxedo-control-center = {
@@ -15,31 +17,26 @@ in
       will get the default configuration until you change it in the
       Tuxedo Control Center.
     '';
+
+    package = mkOption {
+      type = types.package;
+      default = tuxedo-control-center;
+      defaultText = "pkgs.tuxedo-control-center";
+      description = ''
+        Which package to use for tuxedo-control-center.
+      '';
+    };
   };
 
   config = mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = !config.hardware.tuxedo-keyboard.enable;
-        message = "hardware.tuxedo-control-center is not compatible with tuxedo-keyboard as long as we use our own version of the tuxedo-keyboard module.";
-      }
-    ];
-
-    boot.extraModulePackages = [
-      (pkgs.tuxedo-keyboard.override {
-        kernel = config.boot.kernelPackages.kernel;
-      })
-    ];
+    hardware.tuxedo-keyboard.enable = true;
     boot.kernelModules = [ "tuxedo_io" ];
 
-    environment.systemPackages = [
-      pkgs.tuxedo-control-center
-    ];
-
-    services.dbus.packages = [ pkgs.tuxedo-control-center ];
+    environment.systemPackages = [ cfg.package ];
+    services.dbus.packages = [ cfg.package ];
 
     systemd.services.tccd = {
-      path = [ pkgs.tuxedo-control-center ];
+      path = [ cfg.package ];
 
       description = "Tuxedo Control Center Service";
 
@@ -47,13 +44,13 @@ in
 
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.tuxedo-control-center}/bin/tccd --start";
-        ExecStop = "${pkgs.tuxedo-control-center}/bin/tccd --stop";
+        ExecStart = "${cfg.package}/bin/tccd --start";
+        ExecStop = "${cfg.package}/bin/tccd --stop";
       };
     };
 
     systemd.services.tccd-sleep = {
-      path = [ pkgs.tuxedo-control-center ];
+      path = [ cfg.package ];
 
       description = "Tuxedo Control Center Service (sleep/resume)";
 

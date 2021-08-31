@@ -20,10 +20,9 @@ jobs:
       with:
         name: blitz
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-        pushFilter: '(-source$|nixpkgs\.tar\.gz$)'
+        pushFilter: '(-source$|nixpkgs\.tar\.gz$|nixexprs\.tar\.xz$)'
     - run: nix-shell --run "echo OK"
     - run: nix-build --arg nixpkgs "<nixpkgs>" ./nix/ci.nix -A tuxedo-control-center
-    - run: nix-build --arg nixpkgs "<nixpkgs>" ./nix/ci.nix -A tuxedo-keyboard
 
   test:
     needs: build

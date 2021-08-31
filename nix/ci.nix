@@ -1,15 +1,10 @@
 { nixpkgs ? (import ./sources.nix).nixpkgs }:
 let
   this = import ../.;
-  
-  pkgs = import nixpkgs {
-    overlays = [
-      this.overlay
-    ];
-  };
+  pkgs = import nixpkgs {};
 
 in {
-  inherit (pkgs) tuxedo-control-center tuxedo-keyboard;
+  tuxedo-control-center = pkgs.callPackage ./tuxedo-control-center {};
 
   test = pkgs.nixosTest ({ lib, pkgs, ... }: {
     name = "tuxedo-control-center-test";

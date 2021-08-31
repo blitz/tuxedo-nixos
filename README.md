@@ -34,10 +34,6 @@ in {
    tuxedo.module
  ];
 
- nixpkgs.overlays = [
-   tuxedo.overlay
- ];
-
  hardware.tuxedo.enable = true;
 }
 ```
