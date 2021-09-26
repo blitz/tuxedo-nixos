@@ -1,13 +1,13 @@
 { pkgs, lib, stdenv, makeDesktopItem, desktop-file-utils,
 
-  python,
+  python, udev,
 
   makeWrapper, nodejs, electron_9, fetchFromGitHub
 }:
 
 let
   baseName = "tuxedo-control-center";
-  version = "1.0.14";
+  version = "1.1.0";
 
   baseNodePackages = (import ./node-composition.nix {
     inherit pkgs nodejs;
@@ -19,8 +19,12 @@ let
       owner = "tuxedocomputers";
       repo = "tuxedo-control-center";
       rev = "v${version}";
-      sha256 = "00gpsvjbli9f6vj31lbs7flmcz215r91iz6rg1kbzklc3y5k2ifj";
+      sha256 = "138cg34nj90b45jlxjd7lx1yrsrnc0akqjxr5cbxi5jrxlq0sr2n";
     };
+
+    buildInputs = [
+      udev
+    ];
 
     # Electron tries to download itself if this isn't set. We don't
     # like that in nix so let's prevent it.
@@ -57,6 +61,7 @@ stdenv.mkDerivation rec {
   buildInputs = [
     nodejs
     makeWrapper
+    udev
 
     # For node-gyp
     python

@@ -382,6 +382,15 @@ let
         sha512 = "XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==";
       };
     };
+    "@types/chart.js-2.9.32" = {
+      name = "_at_types_slash_chart.js";
+      packageName = "@types/chart.js";
+      version = "2.9.32";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@types/chart.js/-/chart.js-2.9.32.tgz";
+        sha512 = "d45JiRQwEOlZiKwukjqmqpbqbYzUX2yrXdH9qVn6kXpPDsTYCo6YbfFOlnUaJ8S/DhJwbBJiLsMjKpW5oP8B2A==";
+      };
+    };
     "@types/debug-4.1.4" = {
       name = "_at_types_slash_debug";
       packageName = "@types/debug";
@@ -1937,6 +1946,33 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/chardet/-/chardet-0.7.0.tgz";
         sha512 = "mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==";
+      };
+    };
+    "chart.js-2.9.4" = {
+      name = "chart.js";
+      packageName = "chart.js";
+      version = "2.9.4";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/chart.js/-/chart.js-2.9.4.tgz";
+        sha512 = "B07aAzxcrikjAPyV+01j7BmOpxtQETxTSlQ26BEYJ+3iUkbNKaOJ/nDbT6JjyqYxseM0ON12COHYdU2cTIjC7A==";
+      };
+    };
+    "chartjs-color-2.4.1" = {
+      name = "chartjs-color";
+      packageName = "chartjs-color";
+      version = "2.4.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/chartjs-color/-/chartjs-color-2.4.1.tgz";
+        sha512 = "haqOg1+Yebys/Ts/9bLo/BqUcONQOdr/hoEr2LLTRl6C5LXctUdHxsCYfvQVg5JIxITrfCNUDr4ntqmQk9+/0w==";
+      };
+    };
+    "chartjs-color-string-0.6.0" = {
+      name = "chartjs-color-string";
+      packageName = "chartjs-color-string";
+      version = "0.6.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/chartjs-color-string/-/chartjs-color-string-0.6.0.tgz";
+        sha512 = "TIB5OKn1hPJvO7JcteW4WY/63v6KwEdt6udfnDE9iCAZgy+V4SrbSxoIbTw/xkUIapjEI4ExGtD0+6D3KyFd7A==";
       };
     };
     "chokidar-2.1.6" = {
@@ -5908,6 +5944,15 @@ let
         sha512 = "JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==";
       };
     };
+    "lodash-es-4.17.21" = {
+      name = "lodash-es";
+      packageName = "lodash-es";
+      version = "4.17.21";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz";
+        sha512 = "mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==";
+      };
+    };
     "lodash.clonedeep-4.5.0" = {
       name = "lodash.clonedeep";
       packageName = "lodash.clonedeep";
@@ -6421,6 +6466,15 @@ let
         sha512 = "w22rOL5ZYu6HbUehB5deurghGM0hS/xBVyHMGKOuQctkk93J9z9VEOhDsiWrXOprVNQpP9uzGKdl8v9mFspKuw==";
       };
     };
+    "moment-2.29.1" = {
+      name = "moment";
+      packageName = "moment";
+      version = "2.29.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/moment/-/moment-2.29.1.tgz";
+        sha512 = "kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==";
+      };
+    };
     "move-concurrently-1.0.1" = {
       name = "move-concurrently";
       packageName = "move-concurrently";
@@ -6527,6 +6581,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/neo-async/-/neo-async-2.6.1.tgz";
         sha512 = "iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==";
+      };
+    };
+    "ng2-charts-2.4.2" = {
+      name = "ng2-charts";
+      packageName = "ng2-charts";
+      version = "2.4.2";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/ng2-charts/-/ng2-charts-2.4.2.tgz";
+        sha512 = "mY3C2uKCaApHCQizS2YxEOqQ7sSZZLxdV6N1uM9u/VvUgVtYvlPtdcXbKpN52ak93ZE22I73DiLWVDnDNG4/AQ==";
       };
     };
     "ngx-electron-2.1.1" = {
@@ -9544,6 +9607,15 @@ let
         sha512 = "qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==";
       };
     };
+    "tslib-2.2.0" = {
+      name = "tslib";
+      packageName = "tslib";
+      version = "2.2.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/tslib/-/tslib-2.2.0.tgz";
+        sha512 = "gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==";
+      };
+    };
     "tslint-5.15.0" = {
       name = "tslint";
       packageName = "tslint";
@@ -10403,8 +10475,8 @@ let
   args = {
     name = "tuxedo-control-center";
     packageName = "tuxedo-control-center";
-    version = "1.0.14";
-    src = ../../../../../../../../../tmp/tmp.jOhyIFTtfM;
+    version = "1.1.0";
+    src = ../../../../../../../run/user/1000/tmp.kra1KBMoXa;
     dependencies = [
       sources."7zip-bin-4.1.0"
       sources."@angular-devkit/architect-0.800.6"
@@ -10531,6 +10603,7 @@ let
       sources."@schematics/update-0.800.6"
       sources."@sindresorhus/is-0.14.0"
       sources."@szmarczak/http-timer-1.1.2"
+      sources."@types/chart.js-2.9.32"
       sources."@types/debug-4.1.4"
       sources."@types/events-3.0.0"
       sources."@types/glob-7.1.1"
@@ -10778,6 +10851,9 @@ let
         ];
       })
       sources."chardet-0.7.0"
+      sources."chart.js-2.9.4"
+      sources."chartjs-color-2.4.1"
+      sources."chartjs-color-string-0.6.0"
       sources."chokidar-2.1.6"
       sources."chownr-1.1.2"
       sources."chrome-trace-event-1.0.2"
@@ -11391,6 +11467,7 @@ let
       sources."loader-utils-1.2.3"
       sources."locate-path-3.0.0"
       sources."lodash-4.17.19"
+      sources."lodash-es-4.17.21"
       sources."lodash.clonedeep-4.5.0"
       sources."lodash.tail-4.1.1"
       (sources."log4js-4.4.0" // {
@@ -11462,6 +11539,7 @@ let
         ];
       })
       sources."mock-fs-4.10.1"
+      sources."moment-2.29.1"
       sources."move-concurrently-1.0.1"
       sources."ms-2.0.0"
       sources."multicast-dns-6.2.3"
@@ -11472,6 +11550,11 @@ let
       sources."nanomatch-1.2.13"
       sources."negotiator-0.6.2"
       sources."neo-async-2.6.1"
+      (sources."ng2-charts-2.4.2" // {
+        dependencies = [
+          sources."tslib-2.2.0"
+        ];
+      })
       sources."ngx-electron-2.1.1"
       sources."ngx-markdown-8.2.1"
       sources."nice-try-1.0.5"
