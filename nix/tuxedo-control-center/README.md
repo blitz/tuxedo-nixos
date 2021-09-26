@@ -1,6 +1,5 @@
 # How to update
 
-1. Bump the version of `tuxedo-control-center` in [packages.json](./packages.json) to the latest on [tuxedocomputers/tuxedo-control-center](https://github.com/tuxedocomputers/tuxedo-control-center)
-2. Run `generate-dependencies.sh`
-3. Set the version in [default.nix](./default.nix). (Version can be found in [tuxedocomputers/tuxedo-control-center/package.json](https://github.com/tuxedocomputers/tuxedo-control-center/blob/master/package.json))
-4. Build and test
+1. Run `update.sh` and pass the version you want to update to as a parameter. For example: `./update.sh 1.0.9` 
+1. Bump the version and SHA-256 of `tuxedo-control-center` in [default.nix](./default.nix).
+1. Build and test.
