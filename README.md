@@ -37,3 +37,8 @@ in {
  hardware.tuxedo.enable = true;
 }
 ```
+
+## Updating
+
+To update to a new version, see the [updating
+instructions](./nix/tuxedo-control-center/README.md).
