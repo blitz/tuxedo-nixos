@@ -11,6 +11,9 @@ jobs:
     strategy:
       matrix:
         nix-channel: ["nixos-unstable", "nixos-21.05"]
+    env:
+      # See https://github.com/tuxedocomputers/tuxedo-control-center/issues/148
+      NIXPKGS_ALLOW_INSECURE: "1"
     steps:
     - uses: actions/checkout@v2.3.4
     - uses: cachix/install-nix-action@v13
@@ -30,6 +33,9 @@ jobs:
     strategy:
       matrix:
         nix-channel: ["nixos-unstable", "nixos-21.05"]
+    env:
+      # See https://github.com/tuxedocomputers/tuxedo-control-center/issues/148
+      NIXPKGS_ALLOW_INSECURE: "1"
     steps:
     - uses: actions/checkout@v2.3.4
     - uses: cachix/install-nix-action@v13

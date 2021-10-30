@@ -35,6 +35,11 @@ in
     environment.systemPackages = [ cfg.package ];
     services.dbus.packages = [ cfg.package ];
 
+    # See https://github.com/tuxedocomputers/tuxedo-control-center/issues/148
+    nixpkgs.config.permittedInsecurePackages = [
+      "electron-9.4.4"
+    ];
+
     systemd.services.tccd = {
       path = [ cfg.package ];
 
