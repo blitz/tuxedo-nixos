@@ -38,6 +38,16 @@ in {
 }
 ```
 
+## Troubleshooting
+
+The Tuxedo Control Center currently requires an outdated Electron
+version, which can break your build. There is an [upstream
+issue](https://github.com/tuxedocomputers/tuxedo-control-center/issues/148)
+that tracks this.
+
+Until this is fixed follow the instructions that the failing build
+gives you to workaround the issue.
+
 ## Updating
 
 To update to a new version, see the [updating
