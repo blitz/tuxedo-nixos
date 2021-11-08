@@ -34,7 +34,7 @@ in {
    tuxedo.module
  ];
 
- hardware.tuxedo.enable = true;
+ hardware.tuxedo-control-center.enable = true;
 }
 ```
 
