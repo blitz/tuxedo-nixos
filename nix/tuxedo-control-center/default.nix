@@ -75,6 +75,11 @@ stdenv.mkDerivation rec {
     substituteInPlace src/common/classes/TccPaths.ts \
       --replace "/etc/tcc" "/var/lib/tcc" \
       --replace "/opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/service/tccd" "$out/bin/tccd"
+
+    for desktopFile in src/dist-data/tuxedo-control-center{,-tray}.desktop; do
+      substituteInPlace $desktopFile \
+        --replace "/usr/bin/tuxedo-control-center" "$out/bin/tuxedo-control-center"
+    done
    '';
 
   buildPhase = ''
