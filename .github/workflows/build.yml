@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        nix-channel: ["nixos-unstable", "nixos-21.05"]
+        nix-channel: ["nixos-unstable", "nixos-21.05", "nixos-21.11"]
     env:
       # See https://github.com/tuxedocomputers/tuxedo-control-center/issues/148
       NIXPKGS_ALLOW_INSECURE: "1"
