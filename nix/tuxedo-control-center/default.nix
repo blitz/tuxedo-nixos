@@ -2,12 +2,12 @@
 
   python, udev,
 
-  makeWrapper, nodejs, electron_9, fetchFromGitHub
+  makeWrapper, nodejs, electron_11, fetchFromGitHub
 }:
 
 let
   baseName = "tuxedo-control-center";
-  version = "1.1.0";
+  version = "1.1.1";
 
   baseNodePackages = (import ./node-composition.nix {
     inherit pkgs nodejs;
@@ -19,7 +19,7 @@ let
       owner = "tuxedocomputers";
       repo = "tuxedo-control-center";
       rev = "v${version}";
-      sha256 = "138cg34nj90b45jlxjd7lx1yrsrnc0akqjxr5cbxi5jrxlq0sr2n";
+      sha256 = "0h8x6mdl75mcym7d99f2yisxyg0jr1crxyh3jjzvkapshvxsqyj6";
     };
 
     buildInputs = [
@@ -139,7 +139,7 @@ stdenv.mkDerivation rec {
     # The fix is to run electron on a folder with a `package.json` but the `tuxedo-control-center`
     # package.json expects all files to live under `dist/` and I'm not a huge fan of that
     # structure so we just disable the check and call it a day.
-    makeWrapper ${electron_9}/bin/electron $out/bin/tuxedo-control-center \
+    makeWrapper ${electron_11}/bin/electron $out/bin/tuxedo-control-center \
                 --add-flags "$out/e-app/e-app/main.js" \
                 --add-flags "--no-tccd-version-check" \
                 --prefix NODE_PATH : $out/node_modules
