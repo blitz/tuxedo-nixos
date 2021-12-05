@@ -1,4 +1,4 @@
-{ pkgs, lib, stdenv, makeDesktopItem, desktop-file-utils,
+{ pkgs, lib, stdenv, copyDesktopItems,
 
   python3, udev,
 
@@ -40,14 +40,6 @@ let
     NG_CLI_ANALYTICS="false";
   };
 
-  desktopItem = makeDesktopItem {
-    name = "tuxedo-control-center";
-    exec = "tuxedo-control-center %U";
-    comment = "An application helping you to tune your TUXEDO";
-    desktopName = "TUXEDO Control Center";
-    icon = "tuxedo-control-center";
-    categories = "System;";
-  };
 in
 
 stdenv.mkDerivation rec {
@@ -55,7 +47,13 @@ stdenv.mkDerivation rec {
   src = "${nodePackages}/lib/node_modules/tuxedo-control-center/";
 
   nativeBuildInputs = [
-    desktop-file-utils # for desktop-file-validate
+
+    # This is broken on 21.05 until https://github.com/NixOS/nixpkgs/pull/148697
+    # is merged. Until then we just copy desktop files manually. If
+    # you add copyDesktopItems again, please also remove the manual
+    # installation of desktop files below.
+    #
+    # copyDesktopItems
   ];
 
   buildInputs = [
@@ -67,6 +65,12 @@ stdenv.mkDerivation rec {
     python3
   ];
 
+  # These are installed in the right place via copyDesktopItems.
+  desktopItems = [
+    "src/dist-data/tuxedo-control-center.desktop"
+    "src/dist-data/tuxedo-control-center-tray.desktop"
+  ];
+
   # TCC by default writes its config to /etc/tcc, which is
   # inconvenient. Change this to a more standard location.
   #
@@ -76,7 +80,7 @@ stdenv.mkDerivation rec {
       --replace "/etc/tcc" "/var/lib/tcc" \
       --replace "/opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/service/tccd" "$out/bin/tccd"
 
-    for desktopFile in src/dist-data/tuxedo-control-center{,-tray}.desktop; do
+    for desktopFile in ${lib.concatStringsSep " " desktopItems}; do
       substituteInPlace $desktopFile \
         --replace "/usr/bin/tuxedo-control-center" "$out/bin/tuxedo-control-center"
     done
@@ -161,7 +165,11 @@ stdenv.mkDerivation rec {
     cp $out/data/dist-data/tuxedo-control-center_256.svg \
        $out/share/icons/hicolor/scalable/apps/tuxedo-control-center.svg
 
-    ${desktopItem.buildCommand}
+    # This is a workaround. See desktopItems above.
+    mkdir -p $out/share/applications
+    for desktopFile in ${lib.concatStringsSep " " desktopItems}; do
+      install -m 0444 $desktopFile $out/share/applications/
+    done
 
     runHook postInstall
   '';
