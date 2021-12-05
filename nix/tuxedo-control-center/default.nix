@@ -1,6 +1,6 @@
 { pkgs, lib, stdenv, makeDesktopItem, desktop-file-utils,
 
-  python, udev,
+  python3, udev,
 
   makeWrapper, nodejs, electron_11, fetchFromGitHub
 }:
@@ -64,7 +64,7 @@ stdenv.mkDerivation rec {
     udev
 
     # For node-gyp
-    python
+    python3
   ];
 
   # TCC by default writes its config to /etc/tcc, which is
