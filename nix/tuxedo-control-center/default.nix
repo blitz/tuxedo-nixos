@@ -83,6 +83,8 @@ stdenv.mkDerivation rec {
    '';
 
   buildPhase = ''
+    runHook preBuild
+
     # We already have `node_modules` in the current directory but we
     # need it's binaries on `PATH` so we can use them!
     export PATH="./node_modules/.bin:$PATH"
@@ -106,9 +108,13 @@ stdenv.mkDerivation rec {
     npm run build-native   # Builds to ./build/Release/TuxedoIOAPI.node
 
     npm run build-ng-prod
+
+    runHook postBuild
   '';
 
   installPhase = ''
+    runHook preInstall
+
     mkdir -p $out
     cp -R ./dist/tuxedo-control-center/* $out
 
@@ -156,6 +162,8 @@ stdenv.mkDerivation rec {
        $out/share/icons/hicolor/scalable/apps/tuxedo-control-center.svg
 
     ${desktopItem.buildCommand}
+
+    runHook postInstall
   '';
 
   meta = with lib; {
