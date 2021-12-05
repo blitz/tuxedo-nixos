@@ -1,9 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env nix-shell
+#! nix-shell -i bash -p nodePackages.node2nix curl
 
 set -eu -o pipefail
-
-node2nix="$(nix-build "<nixpkgs>" -A nodePackages.node2nix)/bin/node2nix"
-curl="$(nix-build "<nixpkgs>" -A curl)/bin/curl"
 
 if [ "$#" -ne 1 ]; then
     >&2 echo "Error: Missing version parameter"
@@ -23,10 +21,10 @@ WORKDIR=$(mktemp -d)
 trap 'rm -r "$WORKDIR"' EXIT
 
 for f in package.json package-lock.json; do
-    ${curl} -f "$TUXEDO_SRC_URL/$f" > "$WORKDIR/$f"
+    curl -f "$TUXEDO_SRC_URL/$f" > "$WORKDIR/$f"
 done
 
-${node2nix} \
+node2nix \
  --development \
  --nodejs-14 \
  --input "$WORKDIR/package.json" \
