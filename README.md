@@ -66,7 +66,7 @@ First enable the module in your `flake.nix`:
 	};
   };
 
-  outputs = { self, nixpkgs, ... tuxedo-nixos }: {
+  outputs = { self, nixpkgs, tuxedo-nixos }: {
 	nixosConfigurations = {
 	  your-system = nixpkgs.lib.nixosSystem {
 
