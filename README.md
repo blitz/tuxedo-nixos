@@ -19,8 +19,10 @@ control settings. It lives on
 
 ## Usage
 
-To enable Tuxedo Control Center, add the module and overlay from this
-repository to your `/etc/nixos/configuration.nix`.
+To enable Tuxedo Control Center, add the module from this repository
+to your `/etc/nixos/configuration.nix`.
+
+### Option 1: Stable Nix
 
 ```nix
 { config, pkgs, ... }:
@@ -36,6 +38,59 @@ in {
 
  hardware.tuxedo-control-center.enable = true;
 }
+```
+
+### Option 2: Nix Flake
+
+This repository is a [Nix Flake](https://nixos.wiki/wiki/Flakes). As
+such, it exports its module in a way that makes it somewhat convenient
+to use in your Flakes-enabled NixOS configuration.
+
+First enable the module in your `flake.nix`:
+
+```nix
+{
+  inputs = rec {
+	nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+
+	# ...
+
+	tuxedo-nixos = {
+	  url = "github:blitz/tuxedo-nixos";
+
+	  # Avoid pulling in the nixpkgs that we pin in the tuxedo-nixos repo.
+	  # This should give the least surprises and saves on disk space.
+	  inputs = {
+		inherit nixpkgs;
+	  };
+	};
+  };
+
+  outputs = { self, nixpkgs, ... tuxedo-nixos }: {
+	nixosConfigurations = {
+	  your-system = nixpkgs.lib.nixosSystem {
+
+	  # ...
+
+	  modules = [
+		./configuration.nix
+		tuxedo-nixos.nixosModule
+
+		# ...
+	  ];
+
+	  # ...
+
+	  };
+	};
+  };
+}
+```
+
+Then enable the module in `configuration.nix`:
+
+```nix
+  hardware.tuxedo-control-center.enable = true;
 ```
 
 ## Troubleshooting
