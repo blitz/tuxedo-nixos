@@ -8,10 +8,9 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
-    flake-compat-ci.url = "github:hercules-ci/flake-compat-ci";
   };
 
-  outputs = { self, nixpkgs, flake-compat, flake-compat-ci }: {
+  outputs = { self, nixpkgs, flake-compat }: {
 
     defaultPackage.x86_64-linux =
       # Is there a simpler way to whitelist electron?
@@ -26,13 +25,5 @@
       }).pkgs.callPackage ./nix/tuxedo-control-center {};
 
     nixosModule = import ./nix/module.nix;
-
-    # For Hercules CI, which doesn't natively support flakes (yet).
-    ciNix = flake-compat-ci.lib.recurseIntoFlakeWith {
-      flake = self;
-
-      # Optional. Systems for which to perform CI.
-      systems = [ "x86_64-linux" ];
-    };
   };
 }
