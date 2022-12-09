@@ -19,7 +19,7 @@
         localSystem = "x86_64-linux";
         config = {
           permittedInsecurePackages = [
-            "electron-11.5.0"
+            "electron-13.6.9"
           ];
         };
       }).pkgs.callPackage ./nix/tuxedo-control-center {};

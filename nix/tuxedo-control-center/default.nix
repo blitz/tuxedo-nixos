@@ -1,6 +1,6 @@
 { pkgs, lib, stdenv, copyDesktopItems
 , python3, udev
-, makeWrapper, nodejs-14_x, electron_11, fetchFromGitHub
+, makeWrapper, nodejs-14_x, electron_13, fetchFromGitHub
 }:
 
 let
@@ -166,7 +166,7 @@ stdenv.mkDerivation rec {
     # The fix is to run electron on a folder with a `package.json` but the `tuxedo-control-center`
     # package.json expects all files to live under `dist/` and I'm not a huge fan of that
     # structure so we just disable the check and call it a day.
-    makeWrapper ${electron_11}/bin/electron $out/bin/tuxedo-control-center \
+    makeWrapper ${electron_13}/bin/electron $out/bin/tuxedo-control-center \
                 --add-flags "$out/e-app/e-app/main.js" \
                 --add-flags "--no-tccd-version-check" \
                 --prefix NODE_PATH : $out/node_modules
