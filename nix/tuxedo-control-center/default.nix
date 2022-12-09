@@ -1,6 +1,6 @@
 { pkgs, lib, stdenv, copyDesktopItems
 , python3, udev
-, makeWrapper, nodejs, electron_11, fetchFromGitHub
+, makeWrapper, nodejs-14_x, electron_11, fetchFromGitHub
 }:
 
 let
@@ -11,6 +11,13 @@ let
   # 2. Bump the version attribute and src SHA-256 here.
   # 3. Build and test.
   version = "1.1.3";
+
+  # keep in sync with update.sh!
+  # otherwise the format of package.json does not mach the format used by the 
+  # version used by nixpkgs, leading to errors such as:
+  #   > npm ERR! code ENOTCACHED
+  #   > npm ERR! request to https://registry.npmjs.org/node-ble failed: cache mode is 'only-if-cached' but no cached response is available.
+  nodejs = nodejs-14_x;
 
   baseNodePackages = (import ./node-composition.nix {
     inherit pkgs nodejs;
