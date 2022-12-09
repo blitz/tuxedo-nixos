@@ -10,7 +10,7 @@ let
   #    a parameter. For example: `./update.sh 1.1.1`
   # 2. Bump the version attribute and src SHA-256 here.
   # 3. Build and test.
-  version = "1.1.3";
+  version = "1.2.2";
 
   # keep in sync with update.sh!
   # otherwise the format of package.json does not mach the format used by the 
@@ -29,8 +29,19 @@ let
       owner = "tuxedocomputers";
       repo = "tuxedo-control-center";
       rev = "v${version}";
-      sha256 = "etFacSM152DkFWKSdCI3kXCwSwvRXFxZFmUx85JJdGk=";
+      sha256 = "ytfPHn3QyHL1SyjLutHMeS2YwP1iRmVBjScdOPZjDBM=";
     };
+
+    preRebuild = ''
+      # the shebang of this file does not work as is in nix;
+      # usually this is taken care of with patch-shebangs.sh,
+      # but that only handles files marked as executable.
+      # thus mark the file as executable before the hook runs.
+      chmod +x ./node_modules/electron-builder/out/cli/cli.js
+      # and since this runs *after* patch-shebangs ran,
+      # manually execute patch-shebangs for this specific file.
+      patchShebangs ./node_modules/electron-builder/out/cli/cli.js
+    '';
 
     buildInputs = [
       udev
@@ -161,7 +172,7 @@ stdenv.mkDerivation rec {
                 --prefix NODE_PATH : $out/node_modules
 
     mkdir -p $out/share/polkit-1/actions/
-    cp $out/data/dist-data/de.tuxedocomputers.tcc.policy $out/share/polkit-1/actions/de.tuxedocomputers.tcc.policy
+    cp $out/data/dist-data/com.tuxedocomputers.tccd.policy $out/share/polkit-1/actions/com.tuxedocomputers.tccd.policy
 
     mkdir -p $out/etc/dbus-1/system.d/
     cp $out/data/dist-data/com.tuxedocomputers.tccd.conf $out/etc/dbus-1/system.d/com.tuxedocomputers.tccd.conf
