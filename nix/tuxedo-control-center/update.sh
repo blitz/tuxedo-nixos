@@ -24,6 +24,8 @@ for f in package.json package-lock.json; do
     curl -f "$TUXEDO_SRC_URL/$f" > "$WORKDIR/$f"
 done
 
+# keep the nodejs switch in sync with the nodejs alias at the top of default.nix!
+# (see the alias there for an explanation)
 node2nix \
  --development \
  --nodejs-14 \

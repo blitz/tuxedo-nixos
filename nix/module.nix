@@ -37,7 +37,7 @@ in
 
     # See https://github.com/tuxedocomputers/tuxedo-control-center/issues/148
     nixpkgs.config.permittedInsecurePackages = [
-      "electron-11.5.0"
+      "electron-13.6.9"
     ];
 
     systemd.services.tccd = {
