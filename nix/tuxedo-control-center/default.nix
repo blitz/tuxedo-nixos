@@ -6,10 +6,7 @@
 let
   ## Update Instructions
   #
-  # 1. Run `./update.sh` and pass the version you want to update to as
-  #    a parameter. For example: `./update.sh 1.1.1`
-  # 2. Bump the version attribute and src SHA-256 here.
-  # 3. Build and test.
+  # see ./README.md
   version = "1.2.2";
 
   # keep in sync with update.sh!
