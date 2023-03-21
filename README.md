@@ -50,8 +50,8 @@ First enable the module in your `flake.nix`:
 
 ```nix
 {
-  inputs = rec {
-	nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+  inputs = {
+	nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
 
 	# ...
 
@@ -60,9 +60,7 @@ First enable the module in your `flake.nix`:
 
 	  # Avoid pulling in the nixpkgs that we pin in the tuxedo-nixos repo.
 	  # This should give the least surprises and saves on disk space.
-	  inputs = {
-		inherit nixpkgs;
-	  };
+	  inputs.nixpkgs.follows = "nixpkgs";
 	};
   };
 
@@ -74,7 +72,7 @@ First enable the module in your `flake.nix`:
 
 	  modules = [
 		./configuration.nix
-		tuxedo-nixos.nixosModule
+		tuxedo-nixos.nixosModules.default
 
 		# ...
 	  ];
