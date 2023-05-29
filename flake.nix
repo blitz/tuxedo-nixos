@@ -20,6 +20,8 @@
         config = {
           permittedInsecurePackages = [
             "electron-13.6.9"
+            "nodejs-14.21.3"
+            "openssl-1.1.1t"
           ];
         };
       }).pkgs.callPackage ./nix/tuxedo-control-center {};
