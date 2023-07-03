@@ -7,7 +7,7 @@ let
   ## Update Instructions
   #
   # see ./README.md
-  version = "2.0.5";
+  version = "2.0.7";
 
   # keep in sync with update.sh!
   # otherwise the format of package.json does not mach the format used by the 
@@ -26,7 +26,7 @@ let
       owner = "tuxedocomputers";
       repo = "tuxedo-control-center";
       rev = "v${version}";
-      sha256 = "ndYS+cIiXm3jpKi1nNTlGnzuQTwRfe6I/kdkMe+pht0=";
+      sha256 = "itxcGROIIbJ5DbDDPwj29Cz9C7wrABIWGh+q259WsC8=";
     };
 
     preRebuild = ''
