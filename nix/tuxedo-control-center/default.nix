@@ -26,7 +26,7 @@ let
       owner = "tuxedocomputers";
       repo = "tuxedo-control-center";
       rev = "v${version}";
-      sha256 = "itxcGROIIbJ5DbDDPwj29Cz9C7wrABIWGh+q259WsC8=";
+      sha256 = "GSG8pf+mBt+lEDt667gyUa1rYyto6MRRsHj/fl1ef8Y=";
     };
 
     preRebuild = ''
