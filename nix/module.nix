@@ -41,8 +41,8 @@ in
       # "src/tuxedo_io/tuxedo_io.c" file of tuxedo-keyboard
       # (i.e. the #define of MODULE_VERSION).
       (warnIf
-        ((builtins.compareVersions tuxedo-keyboard.version "3.1.0") < 0)
-        "Tuxedo Control Center requires at least version 3.1.0 of tuxedo-keyboard (0.2.6 tuxedo_io kernel module); current version is ${tuxedo-keyboard.version}"
+        ((builtins.compareVersions tuxedo-keyboard.version "3.1.2") < 0)
+        "Tuxedo Control Center requires at least version 3.1.2 of tuxedo-keyboard (0.2.6 tuxedo_io kernel module); current version is ${tuxedo-keyboard.version}"
         "tuxedo_io")
     ];
 
