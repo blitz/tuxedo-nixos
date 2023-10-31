@@ -1,3 +1,33 @@
+# This project is abandoned!
+
+```
+                  _  /)
+                 mo / )
+                 |/)\)
+                  /\_
+                  \__|=
+                 (    )
+                 __)(__
+           _____/      \\_____
+          |  _     ___   _   ||
+          | | \     |   | \  ||
+          | |  |    |   |  | ||
+          | |_/     |   |_/  ||
+          | | \     |   |    ||
+          | |  \    |   |    ||
+          | |   \. _|_. | .  ||
+          |                  ||
+          |  name goes here  ||
+          |                  ||
+  *       | *   **    * **   |**      **
+   \))ejm97/.,(//,,..,,\||(,,.,\\,.((//
+```
+
+Consider using [tuxedo-rs](https://github.com/AaronErhardt/tuxedo-rs)
+as a replacement. It has less features, but should get the job done
+well enough. Alternatively, please feel free to fork this repo.
+
+
 # Tuxedo Control Center for NixOS
 
 [![Build](https://github.com/blitz/tuxedo-nixos/actions/workflows/build.yml/badge.svg)](https://github.com/blitz/tuxedo-nixos/actions/workflows/build.yml)
